@@ -11,10 +11,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^5.9.1",
+    "dotenv": "^16.4.1",
     "fastify": "^4.26.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.16",
-    "tsx": "^4.7.0"
+    "prisma": "^5.9.1",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
   }
 }
