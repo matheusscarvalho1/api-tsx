@@ -10,6 +10,10 @@ export default async function transactionsRoutes (app: FastifyInstance) {
   name: string;
   amount: number;
   }
+
+  interface RequestParams {
+    id: String; 
+  }
     
     //Rota - Criar transações
     app.post('/', async (req, reply) => {
@@ -31,14 +35,27 @@ export default async function transactionsRoutes (app: FastifyInstance) {
       });
 
     //Seção de transações - Listar todas transações
-    app.get('/', async (req, reply) => {
-      reply.send(await prisma.transactions.findMany());
+    app.get('/', async () => {
+      const transaction = await prisma.transactions.findMany();
+
+      return {
+        transaction,
+      }
       });
 
     //Seção de transações - Listar todas transações por ID
-    app.get('/:id', async (req, reply) => {
-  
+    app.get('/:id', async (req) => {
+      const params = req.params as RequestParams;
+      const transaction = await prisma.transactions.findUnique({
+        where: {
+          id: String(params.id),
+        }
       });
+
+      return {
+        transaction
+      }
+    });
 
 
     //Seção de transações - Atualizar transações
