@@ -1,10 +1,16 @@
 import fastify from 'fastify';
+import transactionsRoutes from './routes/transactionsRoutes';
 
 const app = fastify();
 
 app.get('/', async () => {
-  return'Hello World!'
+    return 'Hello World - Rotas definidas: /transactions'
 });
+
+app.register(transactionsRoutes, { 
+    prefix: '/transactions' 
+})
+
 
 app.listen({
     port: 3000

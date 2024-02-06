@@ -10,7 +10,7 @@
 
 - Instalei também as dependências de desenvolvimento
 
--- @types/node - É necesário instalar o pacote para o node conseguir ler o código em TS
+-- @types/node - É necesário instalar esse pacote para o node conseguir ler o código em TS e converter em JS
 ``npm install -D @types/node ``
 
 -- tsx - Automatiza o processo de converter o código TS para JS e executar o Node no JS que foi convertido e sem sujar o projeto criando o arquivo com o código convertido
