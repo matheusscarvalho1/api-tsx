@@ -2,8 +2,8 @@ import fastify from 'fastify';
 
 const app = fastify();
 
-app.get('/', async (request, reply) => {
-  reply.send('Hello World!')
+app.get('/', async () => {
+  return'Hello World!'
 });
 
 app.listen({
