@@ -1,5 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { PrismaClient } from "@prisma/client";
+import { z } from 'zod'
+
 
 
 export default async function transactionsRoutes (app: FastifyInstance) {
@@ -17,7 +19,13 @@ export default async function transactionsRoutes (app: FastifyInstance) {
     
     //Rota - Criar transações
     app.post('/', async (req, reply) => {
-      const { name, amount } = req.body as TransactionData;
+
+      const createTransactionBodySchema = z.object({
+        name: z.string(),
+        amount: z.number(),
+      });
+
+      const { name, amount } = createTransactionBodySchema.parse(req.body) as TransactionData;
 
        try {
         const newTransaction = await prisma.transactions.create({
