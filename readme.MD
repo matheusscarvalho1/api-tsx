@@ -1,4 +1,5 @@
 # Criando minha primeira API com Node e TS
+*Falta terminar*
 
 - Inicialmente eu comecei o projeto com
 
