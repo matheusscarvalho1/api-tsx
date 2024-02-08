@@ -17,11 +17,11 @@ export default async function transactionsRoutes (app: FastifyInstance) {
   }
 
   interface RequestParams {
-    id?: String; 
+    id: String; 
   }
     
     //Rota - Criar transações
-    app.post('/add', async (req, reply) => {
+    app.post('/', async (req, reply) => {
 
       const createTransactionBodySchema = z.object({
         name: z.string(),
@@ -45,29 +45,25 @@ export default async function transactionsRoutes (app: FastifyInstance) {
        }
       });
 
+    //Seção de transações - Listar todas transações
+    app.get('/', async (req, reply) => {
+      const listTransactions = await prisma.transactions.findMany();
+
+      reply.code(200).send(listTransactions)
+      });
 
     //Seção de transações - Listar todas transações por ID
-    app.get('/:id?', async (req, reply) => {
-      const { id } = req.params as RequestParams;
-
-      try {
-        if (id) {
-          const listTransactionById = await prisma.transactions.findMany({
-            where: {
-              id: String(id),
-            }
-          });
-          reply.code(200).send(listTransactionById);
-        } else {
-          const listTransactions = await prisma.transactions.findMany();
-          reply.code(200).send(listTransactions);
+    app.get('/:id', async (req, reply) => {
+      const params = req.params as RequestParams;
+      const listTransactionById = await prisma.transactions.findUnique({
+        where: {
+          id: String(params.id),
         }
-      }
-      catch (error) {
-        console.error('Erro ao listar transações:', error);
-        reply.code(500).send();
-      }
+      });
+
+      reply.code(200).send(listTransactionById);
     });
+
 
     //Seção de transações - Atualizar transações
     app.put('/:id', async (req, reply) => {
