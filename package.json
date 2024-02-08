@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx src/server.ts"
+    "dev": "tsx src/server.ts",
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
@@ -14,13 +14,16 @@
     "@prisma/client": "^5.9.1",
     "dotenv": "^16.4.1",
     "fastify": "^4.26.0",
+    "supertest": "^6.3.4",
     "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^20.11.16",
+    "@types/supertest": "^6.0.2",
     "prisma": "^5.9.1",
     "ts-node": "^10.9.2",
     "tsx": "^4.7.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.2"
   }
 }

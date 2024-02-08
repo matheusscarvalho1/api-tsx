@@ -105,7 +105,7 @@ export default async function transactionsRoutes (app: FastifyInstance) {
         reply.send(200).send(updateTransactionUnique)
       } catch (error) {
         console.error('Erro ao atualizar transação:', error);
-        reply.code(500).send();
+        reply.code(500).send('Erro ao atualizar transação');
       }
     })
 
