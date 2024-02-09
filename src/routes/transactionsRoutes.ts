@@ -30,6 +30,7 @@ export default async function transactionsRoutes (app: FastifyInstance) {
 
       const { name, amount } = createTransactionBodySchema.parse(req.body) as TransactionData;
 
+
        try {
         const newTransaction = await prisma.transactions.create({
           data: {

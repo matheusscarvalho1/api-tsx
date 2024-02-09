@@ -31,22 +31,20 @@ describe('Testes de transações', () => {
             amount: 5000,
         })
 
-        const cookies = createTransactionResponse.get('Set-Cookie')
-
-        const listTransactionsResponse = await request(app.server)
-            .get('/transactions')
-            .set('Cookie', cookies)
-            .expect(200)
-
-            expect(listTransactionsResponse.body.transactions).toEqual([
-               
-                expect.objectContaining({
-                    name: 'New transaction',
-                    amount: 5000,
-                })
-
-            ])
         
+        const cookies = createTransactionResponse.get('Set-Cookie')
+        const listTransactionsResponse = await request(app.server)
+        
+        .get('/transactions')
+        .set('Cookie', cookies)
+        .expect(200)
+        
+        expect(listTransactionsResponse.body.transactions).toEqual([
+            expect.objectContaining({
+                title: 'New transaction',
+                amount: 5000,
+            })
+        ]);
     })
 
 })
