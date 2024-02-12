@@ -1,5 +1,8 @@
-import { FastifyRequest, FastifyReply } from 'fastify'
+import { FastifyRequest, FastifyReply } from "fastify";
 
-export async function verificarMetodoeUrl (request: FastifyRequest, reply: FastifyReply) {
-    console.log(`[${request.method}] ${request.url}`)
-  }
+export async function verificarMetodoeUrl(
+  request: FastifyRequest,
+  reply: FastifyReply
+) {
+  console.log(`[${request.method}] ${request.url}`);
+}
